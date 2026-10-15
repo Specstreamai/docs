@@ -1,0 +1,409 @@
+{
+  "id": "Twilio",
+  "label": "Twilio",
+  "version": "1.0.0",
+  "description": "Arcade.dev LLM tools for sending and reading SMS through Twilio",
+  "metadata": {
+    "category": "social",
+    "iconUrl": "https://design-system.arcade.dev/icons/twilio.svg",
+    "isBYOC": false,
+    "isPro": false,
+    "type": "arcade",
+    "docsLink": "https://docs.arcade.dev/en/resources/integrations/social-communication/twilio",
+    "isComingSoon": false,
+    "isHidden": false
+  },
+  "auth": null,
+  "tools": [
+    {
+      "name": "ListConversation",
+      "qualifiedName": "Twilio.ListConversation",
+      "fullyQualifiedName": "Twilio.ListConversation@1.0.0",
+      "description": "List SMS messages exchanged with one contact, newest first.\n\nIncludes messages that contact sent to the Twilio number and messages sent to that contact\nfrom the Twilio number. Pass the returned cursor to read older messages. A cursor only\ncontinues the same numbers and page size.",
+      "parameters": [
+        {
+          "name": "contact_number",
+          "type": "string",
+          "required": true,
+          "description": "Only include SMS messages exchanged with this phone number, in E.164 format.",
+          "enum": null,
+          "inferrable": true
+        },
+        {
+          "name": "on_number",
+          "type": "string",
+          "required": false,
+          "description": "Read the conversation on this Twilio phone number, in E.164 format. Defaults to the account's only SMS-capable number.",
+          "enum": null,
+          "inferrable": true
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "description": "Maximum results to return (1-50). Defaults to 20.",
+          "enum": null,
+          "inferrable": true
+        },
+        {
+          "name": "cursor",
+          "type": "string",
+          "required": false,
+          "description": "Continue an earlier page of this same conversation. Defaults to the first page.",
+          "enum": null,
+          "inferrable": true
+        }
+      ],
+      "auth": null,
+      "secrets": [
+        "TWILIO_ACCOUNT_SID",
+        "TWILIO_API_KEY_SID",
+        "TWILIO_API_KEY_SECRET"
+      ],
+      "secretsInfo": [
+        {
+          "name": "TWILIO_ACCOUNT_SID",
+          "type": "api_key"
+        },
+        {
+          "name": "TWILIO_API_KEY_SID",
+          "type": "api_key"
+        },
+        {
+          "name": "TWILIO_API_KEY_SECRET",
+          "type": "client_secret"
+        }
+      ],
+      "output": {
+        "type": "json",
+        "description": "No description provided."
+      },
+      "documentationChunks": [],
+      "codeExample": {
+        "toolName": "Twilio.ListConversation",
+        "parameters": {
+          "contact_number": {
+            "value": "+14155552671",
+            "type": "string",
+            "required": true
+          },
+          "on_number": {
+            "value": "+12025550184",
+            "type": "string",
+            "required": false
+          },
+          "limit": {
+            "value": 25,
+            "type": "integer",
+            "required": false
+          },
+          "cursor": {
+            "value": "eyJwYWdlIjoyLCJwYWdlU2l6ZSI6MjV9",
+            "type": "string",
+            "required": false
+          }
+        },
+        "requiresAuth": false,
+        "tabLabel": "Call the Tool"
+      },
+      "metadata": {
+        "classification": {
+          "serviceDomains": [
+            "messaging"
+          ]
+        },
+        "behavior": {
+          "operations": [
+            "read"
+          ],
+          "readOnly": true,
+          "destructive": false,
+          "idempotent": true,
+          "openWorld": true
+        },
+        "extras": null
+      }
+    },
+    {
+      "name": "ListPhoneNumbers",
+      "qualifiedName": "Twilio.ListPhoneNumbers",
+      "fullyQualifiedName": "Twilio.ListPhoneNumbers@1.0.0",
+      "description": "List SMS-capable phone numbers on the Twilio account, in ascending order by phone number.\n\nA page can be shorter than the limit when numbers on it cannot send SMS. Pass the returned\ncursor to read the next page.",
+      "parameters": [
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "description": "Maximum results to return (1-50). Defaults to 20.",
+          "enum": null,
+          "inferrable": true
+        },
+        {
+          "name": "cursor",
+          "type": "string",
+          "required": false,
+          "description": "Continue an earlier page of SMS-capable numbers. Defaults to the first page.",
+          "enum": null,
+          "inferrable": true
+        }
+      ],
+      "auth": null,
+      "secrets": [
+        "TWILIO_ACCOUNT_SID",
+        "TWILIO_API_KEY_SID",
+        "TWILIO_API_KEY_SECRET"
+      ],
+      "secretsInfo": [
+        {
+          "name": "TWILIO_ACCOUNT_SID",
+          "type": "api_key"
+        },
+        {
+          "name": "TWILIO_API_KEY_SID",
+          "type": "api_key"
+        },
+        {
+          "name": "TWILIO_API_KEY_SECRET",
+          "type": "client_secret"
+        }
+      ],
+      "output": {
+        "type": "json",
+        "description": "No description provided."
+      },
+      "documentationChunks": [],
+      "codeExample": {
+        "toolName": "Twilio.ListPhoneNumbers",
+        "parameters": {
+          "limit": {
+            "value": 25,
+            "type": "integer",
+            "required": false
+          },
+          "cursor": {
+            "value": "eyJwYWdlIjoyLCJzdGFydEluZGV4IjoyNX0=",
+            "type": "string",
+            "required": false
+          }
+        },
+        "requiresAuth": false,
+        "tabLabel": "Call the Tool"
+      },
+      "metadata": {
+        "classification": {
+          "serviceDomains": [
+            "messaging"
+          ]
+        },
+        "behavior": {
+          "operations": [
+            "read"
+          ],
+          "readOnly": true,
+          "destructive": false,
+          "idempotent": true,
+          "openWorld": true
+        },
+        "extras": null
+      }
+    },
+    {
+      "name": "ListReceivedMessages",
+      "qualifiedName": "Twilio.ListReceivedMessages",
+      "fullyQualifiedName": "Twilio.ListReceivedMessages@1.0.0",
+      "description": "List SMS messages received on a Twilio number, newest first.\n\nPass the returned cursor to read the next, older page. A page cursor only continues the\nsame number and page size.",
+      "parameters": [
+        {
+          "name": "on_number",
+          "type": "string",
+          "required": false,
+          "description": "Only include SMS messages received by this Twilio phone number, in E.164 format. Defaults to the account's only SMS-capable number.",
+          "enum": null,
+          "inferrable": true
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "description": "Maximum results to return (1-50). Defaults to 20.",
+          "enum": null,
+          "inferrable": true
+        },
+        {
+          "name": "cursor",
+          "type": "string",
+          "required": false,
+          "description": "Continue an earlier page of messages received by the same number. Defaults to the first page.",
+          "enum": null,
+          "inferrable": true
+        }
+      ],
+      "auth": null,
+      "secrets": [
+        "TWILIO_ACCOUNT_SID",
+        "TWILIO_API_KEY_SID",
+        "TWILIO_API_KEY_SECRET"
+      ],
+      "secretsInfo": [
+        {
+          "name": "TWILIO_ACCOUNT_SID",
+          "type": "api_key"
+        },
+        {
+          "name": "TWILIO_API_KEY_SID",
+          "type": "api_key"
+        },
+        {
+          "name": "TWILIO_API_KEY_SECRET",
+          "type": "client_secret"
+        }
+      ],
+      "output": {
+        "type": "json",
+        "description": "No description provided."
+      },
+      "documentationChunks": [],
+      "codeExample": {
+        "toolName": "Twilio.ListReceivedMessages",
+        "parameters": {
+          "on_number": {
+            "value": "+14155552671",
+            "type": "string",
+            "required": false
+          },
+          "limit": {
+            "value": 25,
+            "type": "integer",
+            "required": false
+          },
+          "cursor": {
+            "value": "PA84a123bc4d5e6f7a8b9c0d1e2f3a4b5",
+            "type": "string",
+            "required": false
+          }
+        },
+        "requiresAuth": false,
+        "tabLabel": "Call the Tool"
+      },
+      "metadata": {
+        "classification": {
+          "serviceDomains": [
+            "messaging"
+          ]
+        },
+        "behavior": {
+          "operations": [
+            "read"
+          ],
+          "readOnly": true,
+          "destructive": false,
+          "idempotent": true,
+          "openWorld": true
+        },
+        "extras": null
+      }
+    },
+    {
+      "name": "SendSms",
+      "qualifiedName": "Twilio.SendSms",
+      "fullyQualifiedName": "Twilio.SendSms@1.0.0",
+      "description": "Send an SMS from a Twilio phone number on this account.\n\nReturns the new message SID and Twilio's status for it. A trial account can text only\nverified destination numbers. If Twilio does not confirm the send, the message may already\nexist.",
+      "parameters": [
+        {
+          "name": "to",
+          "type": "string",
+          "required": true,
+          "description": "Send the SMS to this phone number, in E.164 format.",
+          "enum": null,
+          "inferrable": true
+        },
+        {
+          "name": "body",
+          "type": "string",
+          "required": true,
+          "description": "The text of the SMS. At most 1600 characters.",
+          "enum": null,
+          "inferrable": true
+        },
+        {
+          "name": "from_number",
+          "type": "string",
+          "required": false,
+          "description": "Send the SMS from this Twilio phone number, in E.164 format. Defaults to the account's only SMS-capable number.",
+          "enum": null,
+          "inferrable": true
+        }
+      ],
+      "auth": null,
+      "secrets": [
+        "TWILIO_ACCOUNT_SID",
+        "TWILIO_API_KEY_SID",
+        "TWILIO_API_KEY_SECRET"
+      ],
+      "secretsInfo": [
+        {
+          "name": "TWILIO_ACCOUNT_SID",
+          "type": "api_key"
+        },
+        {
+          "name": "TWILIO_API_KEY_SID",
+          "type": "api_key"
+        },
+        {
+          "name": "TWILIO_API_KEY_SECRET",
+          "type": "client_secret"
+        }
+      ],
+      "output": {
+        "type": "json",
+        "description": "No description provided."
+      },
+      "documentationChunks": [],
+      "codeExample": {
+        "toolName": "Twilio.SendSms",
+        "parameters": {
+          "to": {
+            "value": "+14155552671",
+            "type": "string",
+            "required": true
+          },
+          "body": {
+            "value": "Hello! Your verification code is 482910. It expires in 10 minutes.",
+            "type": "string",
+            "required": true
+          },
+          "from_number": {
+            "value": "+12025550142",
+            "type": "string",
+            "required": false
+          }
+        },
+        "requiresAuth": false,
+        "tabLabel": "Call the Tool"
+      },
+      "metadata": {
+        "classification": {
+          "serviceDomains": [
+            "messaging"
+          ]
+        },
+        "behavior": {
+          "operations": [
+            "create"
+          ],
+          "readOnly": false,
+          "destructive": false,
+          "idempotent": false,
+          "openWorld": true
+        },
+        "extras": null
+      }
+    }
+  ],
+  "documentationChunks": [],
+  "customImports": [],
+  "subPages": [],
+  "curationSourceHash": "da70ed30d9201488046d1ae1b04dc45cf6378210501e24b53236a4aa02f1ef89",
+  "generatedAt": "2026-10-15T11:15:29.924Z",
+  "summary": "## Twilio Toolkit\n\nThe Twilio toolkit connects Arcade to Twilio's messaging API, enabling LLMs to send SMS messages and read SMS conversations through phone numbers on a Twilio account.\n\n## Capabilities\n\n- **Sending SMS**: Send messages from any SMS-capable Twilio number on the account; returns the message SID and delivery status. Trial accounts are restricted to verified destination numbers.\n- **Reading conversations**: Retrieve the full two-way SMS thread with a specific contact (messages sent and received), paginated newest-first with cursor support.\n- **Listing received messages**: Fetch inbound SMS messages on a given Twilio number, paginated with a cursor that preserves the number and page size across calls.\n- **Phone number discovery**: List all SMS-capable numbers on the account in ascending order, with cursor-based pagination; pages may be shorter than the requested limit when some numbers lack SMS capability.\n\n## Secrets\n\nThis toolkit requires no OAuth flow. Authentication is performed directly with Twilio credentials passed as secrets.\n\n- **`TWILIO_ACCOUNT_SID`** — The unique identifier for your Twilio account. Found on the [Twilio Console homepage](https://console.twilio.com/) under **Account Info**. It begins with `AC`.\n\n- **`TWILIO_API_KEY_SID`** — The SID of a Twilio API Key, used together with `TWILIO_API_KEY_SECRET` instead of your master auth token. Create an API Key in the Twilio Console under **Account → API keys & tokens → Create API key**. Choose **Standard** type unless you need account-level control (which requires **Main** type). The SID is shown immediately after creation and begins with `SK`. See [Twilio API Keys documentation](https://www.twilio.com/docs/iam/api-keys) for details.\n\n- **`TWILIO_API_KEY_SECRET`** — The secret paired with `TWILIO_API_KEY_SID`. It is displayed **only once** at the moment the API Key is created in the Console; copy and store it securely before closing the page. If lost, you must create a new API Key. See [Twilio API Keys documentation](https://www.twilio.com/docs/iam/api-keys) for details.\n\nFor guidance on storing secrets in Arcade, see the [Arcade secrets documentation](https://docs.arcade.dev/en/guides/create-tools/tool-basics/create-tool-secrets). You can manage secrets at [https://api.arcade.dev/dashboard/auth/secrets](https://api.arcade.dev/dashboard/auth/secrets)."
+}
