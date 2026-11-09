@@ -11,6 +11,7 @@
     "github",
     "splunk",
     "aws",
-    "slack"
+    "slack",
+    "specstream"
   ]
 }
